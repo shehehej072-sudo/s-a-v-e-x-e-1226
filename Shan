@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Name | Web Developer &amp; Designer</title>
+<meta name="description" content="Portfolio of Your Name: websites and apps built with care.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#12123a;--navy2:#1c1c5a;--coral:#ff5d73;--ink:#16162e;--muted:#5d6180;--bg:#ffffff;--soft:#f3f4fb;--line:#e3e5f2}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+h1,h2,h3{line-height:1.1;letter-spacing:-.025em}
+
+/* Nav */
+header{position:fixed;inset:0 0 auto 0;z-index:20;background:rgba(18,18,58,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{color:#fff;font-weight:800;font-size:1.15rem}
+.logo i{color:var(--coral);font-style:normal}
+.links{display:flex;gap:28px;align-items:center}
+.links a{color:#c9cbee;font-weight:500;font-size:.95rem}
+.links a:hover{color:#fff}
+.links .cta{background:var(--coral);color:#fff;padding:9px 20px;border-radius:999px;font-weight:600}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.7rem;cursor:pointer}
+
+/* Hero */
+.hero{background:radial-gradient(60% 70% at 85% 20%,#3b3bb3 0%,transparent 60%),radial-gradient(50% 60% at 10% 90%,#ff5d7355 0%,transparent 60%),var(--navy);color:#fff;padding:150px 0 100px;position:relative;overflow:hidden}
+.hero h1{font-weight:800;font-size:clamp(2.6rem,8vw,5.4rem);max-width:13ch}
+.hero .sub{margin:22px 0 34px;max-width:50ch;color:#c9cbee;font-size:1.12rem}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:14px 28px;border-radius:12px;font-weight:600;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.main{background:var(--coral);color:#fff}
+.btn.line{border:2px solid rgba(255,255,255,.35);color:#fff}
+.btn.line:hover{background:rgba(255,255,255,.1)}
+.orb{position:absolute;right:-90px;top:130px;width:320px;height:320px;border-radius:50%;background:linear-gradient(135deg,var(--coral),#6d5dfc);filter:blur(60px);opacity:.55;animation:float 9s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-30px)}}
+
+/* Stats */
+.stats{background:var(--soft);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}
+.stat{padding:30px 10px}
+.stat b{display:block;font-size:2rem;font-weight:800;color:var(--navy2)}
+.stat span{color:var(--muted);font-size:.92rem}
+
+/* Sections */
+section{padding:84px 0}
+.tag{color:var(--coral);font-weight:600;margin-bottom:10px;font-size:.95rem}
+h2{font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:800;margin-bottom:14px}
+.intro{color:var(--muted);max-width:56ch;margin-bottom:44px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.card{border:1px solid var(--line);border-radius:18px;padding:30px;background:#fff;transition:box-shadow .25s,border-color .25s}
+.card:hover{box-shadow:0 18px 40px -18px rgba(28,28,90,.35);border-color:#cfd2ee}
+.ico{width:48px;height:48px;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-size:1.4rem;margin-bottom:18px}
+.card h3{font-size:1.2rem;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.97rem}
+
+/* Work */
+.work{background:var(--soft)}
+.proj{border-radius:18px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.thumb{height:170px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:1.3rem}
+.t1{background:linear-gradient(135deg,#3b3bb3,#6d5dfc)}
+.t2{background:linear-gradient(135deg,#ff5d73,#ff9a6b)}
+.t3{background:linear-gradient(135deg,#12123a,#3b3bb3)}
+.proj div.in{padding:24px}
+.proj h3{font-size:1.15rem;margin-bottom:6px}
+.proj p{color:var(--muted);font-size:.95rem;margin-bottom:14px}
+.proj .chips span{display:inline-block;background:var(--soft);border-radius:999px;padding:4px 12px;font-size:.8rem;font-weight:500;margin:0 6px 6px 0}
+.proj a.lnk{color:var(--coral);font-weight:600}
+
+/* Process */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:26px;counter-reset:s}
+.step{border-top:3px solid var(--navy2);padding-top:18px;counter-increment:s}
+.step::before{content:"Step " counter(s);color:var(--coral);font-weight:600;font-size:.9rem}
+.step h3{margin:6px 0;font-size:1.15rem}
+.step p{color:var(--muted);font-size:.95rem}
+
+/* Contact */
+.contact{background:var(--navy);color:#fff;text-align:center}
+.contact p{color:#c9cbee;max-width:50ch;margin:0 auto 30px}
+.mail{font-size:clamp(1.2rem,4vw,1.8rem);font-weight:600;border-bottom:2px solid var(--coral);padding-bottom:3px}
+.social{display:flex;gap:22px;justify-content:center;margin-top:34px}
+.social a{color:#c9cbee;font-weight:500}
+.social a:hover{color:#fff}
+footer{background:#0c0c2b;color:#8c90b8;text-align:center;padding:22px;font-size:.88rem}
+
+@media(max-width:760px){
+  .burger{display:block}
+  .links{position:absolute;top:64px;left:0;right:0;background:var(--navy);flex-direction:column;padding:18px 22px 26px;gap:18px;display:none;border-bottom:1px solid rgba(255,255,255,.1)}
+  .links.open{display:flex}
+  .stats .wrap{grid-template-columns:repeat(2,1fr)}
+  .hero{padding:120px 0 70px}
+  section{padding:60px 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a class="logo" href="#top">Your Name<i>.</i></a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      <div class="links" id="links">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a class="cta" href="#contact">Hire me</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<div class="hero">
+  <div class="orb"></div>
+  <div class="wrap">
+    <h1>I design and build websites that work.</h1>
+    <p class="sub">Hi, I’m Your Name, a web developer and designer. I turn ideas into fast, modern websites that look great on every screen.</p>
+    <div class="btns">
+      <a class="btn main" href="#work">See my work</a>
+      <a class="btn line" href="#contact">Start a project</a>
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>10+</b><span>Projects built</span></div>
+    <div class="stat"><b>100%</b><span>Mobile friendly</span></div>
+    <div class="stat"><b>24h</b><span>Reply time</span></div>
+    <div class="stat"><b>1+</b><span>Years learning</span></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <p class="tag">What I do</p>
+    <h2>Services</h2>
+    <p class="intro">Everything you need to get a clean, professional presence online.</p>
+    <div class="grid3">
+      <div class="card"><div class="ico">&#127912;</div><h3>Website design</h3><p>Clean layouts and clear typography that match your brand and guide visitors to act.</p></div>
+      <div class="card"><div class="ico">&#128187;</div><h3>Web development</h3><p>Fast, responsive websites written in HTML, CSS and JavaScript, hosted for free on GitHub Pages.</p></div>
+      <div class="card"><div class="ico">&#128241;</div><h3>Mobile first</h3><p>Every page is tested on small screens first, so it feels right on any phone.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="work">
+  <div class="wrap">
+    <p class="tag">Selected work</p>
+    <h2>Projects</h2>
+    <p class="intro">A few things I have built. Replace these with your own projects.</p>
+    <div class="grid3">
+      <article class="proj">
+        <div class="thumb t1">Project One</div>
+        <div class="in"><h3>Business website</h3><p>A clean landing page with services, pricing and a contact section.</p>
+        <div class="chips"><span>HTML</span><span>CSS</span></div>
+        <a class="lnk" href="https://github.com/shehehej072-sudo">View project</a></div>
+      </article>
+      <article class="proj">
+        <div class="thumb t2">Project Two</div>
+        <div class="in"><h3>Personal blog</h3><p>A fast reading experience with simple navigation and dark mode.</p>
+        <div class="chips"><span>JavaScript</span><span>Design</span></div>
+        <a class="lnk" href="https://github.com/shehehej072-sudo">View project</a></div>
+      </article>
+      <article class="proj">
+        <div class="thumb t3">Project Three</div>
+        <div class="in"><h3>Web app</h3><p>A small tool that solves one problem well, built for phones and desktops.</p>
+        <div class="chips"><span>JavaScript</span><span>UI</span></div>
+        <a class="lnk" href="https://github.com/shehehej072-sudo">View project</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <p class="tag">How I work</p>
+    <h2>My process</h2>
+    <p class="intro">A simple path from idea to live website.</p>
+    <div class="steps">
+      <div class="step"><h3>Discover</h3><p>We talk about your goal, audience and what the site must do.</p></div>
+      <div class="step"><h3>Design</h3><p>I plan the layout, colors and content so you can approve the look.</p></div>
+      <div class="step"><h3>Build</h3><p>I code the site to be fast, responsive and easy to update.</p></div>
+      <div class="step"><h3>Launch</h3><p>I publish it live and make sure everything works on every device.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="tag">Contact</p>
+    <h2>Let’s build something together</h2>
+    <p>Have a project in mind? Send me an email and I’ll reply within a day.</p>
+    <a class="mail" href="mailto:youremail@example.com">youremail@example.com</a>
+    <div class="social">
+      <a href="https://github.com/shehehej072-sudo">GitHub</a>
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>© 2026 Your Name. All rights reserved.</footer>
+
+<script>
+var b=document.getElementById('burger'),l=document.getElementById('links');
+b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');b.setAttribute('aria-expanded','false')}});
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Name | Web Developer &amp; Designer</title>
+<meta name="description" content="Portfolio of Your Name: websites and apps built with care.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#12123a;--navy2:#1c1c5a;--coral:#ff5d73;--ink:#16162e;--muted:#5d6180;--bg:#ffffff;--soft:#f3f4fb;--line:#e3e5f2}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:17px}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+h1,h2,h3{line-height:1.1;letter-spacing:-.025em}
+
+/* Nav */
+header{position:fixed;inset:0 0 auto 0;z-index:20;background:rgba(18,18,58,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{color:#fff;font-weight:800;font-size:1.15rem}
+.logo i{color:var(--coral);font-style:normal}
+.links{display:flex;gap:28px;align-items:center}
+.links a{color:#c9cbee;font-weight:500;font-size:.95rem}
+.links a:hover{color:#fff}
+.links .cta{background:var(--coral);color:#fff;padding:9px 20px;border-radius:999px;font-weight:600}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.7rem;cursor:pointer}
+
+/* Hero */
+.hero{background:radial-gradient(60% 70% at 85% 20%,#3b3bb3 0%,transparent 60%),radial-gradient(50% 60% at 10% 90%,#ff5d7355 0%,transparent 60%),var(--navy);color:#fff;padding:150px 0 100px;position:relative;overflow:hidden}
+.hero h1{font-weight:800;font-size:clamp(2.6rem,8vw,5.4rem);max-width:13ch}
+.hero .sub{margin:22px 0 34px;max-width:50ch;color:#c9cbee;font-size:1.12rem}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:14px 28px;border-radius:12px;font-weight:600;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.main{background:var(--coral);color:#fff}
+.btn.line{border:2px solid rgba(255,255,255,.35);color:#fff}
+.btn.line:hover{background:rgba(255,255,255,.1)}
+.orb{position:absolute;right:-90px;top:130px;width:320px;height:320px;border-radius:50%;background:linear-gradient(135deg,var(--coral),#6d5dfc);filter:blur(60px);opacity:.55;animation:float 9s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-30px)}}
+
+/* Stats */
+.stats{background:var(--soft);border-bottom:1px solid var(--line)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);text-align:center}
+.stat{padding:30px 10px}
+.stat b{display:block;font-size:2rem;font-weight:800;color:var(--navy2)}
+.stat span{color:var(--muted);font-size:.92rem}
+
+/* Sections */
+section{padding:84px 0}
+.tag{color:var(--coral);font-weight:600;margin-bottom:10px;font-size:.95rem}
+h2{font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:800;margin-bottom:14px}
+.intro{color:var(--muted);max-width:56ch;margin-bottom:44px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.card{border:1px solid var(--line);border-radius:18px;padding:30px;background:#fff;transition:box-shadow .25s,border-color .25s}
+.card:hover{box-shadow:0 18px 40px -18px rgba(28,28,90,.35);border-color:#cfd2ee}
+.ico{width:48px;height:48px;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-size:1.4rem;margin-bottom:18px}
+.card h3{font-size:1.2rem;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.97rem}
+
+/* Work */
+.work{background:var(--soft)}
+.proj{border-radius:18px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.thumb{height:170px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:1.3rem}
+.t1{background:linear-gradient(135deg,#3b3bb3,#6d5dfc)}
+.t2{background:linear-gradient(135deg,#ff5d73,#ff9a6b)}
+.t3{background:linear-gradient(135deg,#12123a,#3b3bb3)}
+.proj div.in{padding:24px}
+.proj h3{font-size:1.15rem;margin-bottom:6px}
+.proj p{color:var(--muted);font-size:.95rem;margin-bottom:14px}
+.proj .chips span{display:inline-block;background:var(--soft);border-radius:999px;padding:4px 12px;font-size:.8rem;font-weight:500;margin:0 6px 6px 0}
+.proj a.lnk{color:var(--coral);font-weight:600}
+
+/* Process */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:26px;counter-reset:s}
+.step{border-top:3px solid var(--navy2);padding-top:18px;counter-increment:s}
+.step::before{content:"Step " counter(s);color:var(--coral);font-weight:600;font-size:.9rem}
+.step h3{margin:6px 0;font-size:1.15rem}
+.step p{color:var(--muted);font-size:.95rem}
+
+/* Contact */
+.contact{background:var(--navy);color:#fff;text-align:center}
+.contact p{color:#c9cbee;max-width:50ch;margin:0 auto 30px}
+.mail{font-size:clamp(1.2rem,4vw,1.8rem);font-weight:600;border-bottom:2px solid var(--coral);padding-bottom:3px}
+.social{display:flex;gap:22px;justify-content:center;margin-top:34px}
+.social a{color:#c9cbee;font-weight:500}
+.social a:hover{color:#fff}
+footer{background:#0c0c2b;color:#8c90b8;text-align:center;padding:22px;font-size:.88rem}
+
+@media(max-width:760px){
+  .burger{display:block}
+  .links{position:absolute;top:64px;left:0;right:0;background:var(--navy);flex-direction:column;padding:18px 22px 26px;gap:18px;display:none;border-bottom:1px solid rgba(255,255,255,.1)}
+  .links.open{display:flex}
+  .stats .wrap{grid-template-columns:repeat(2,1fr)}
+  .hero{padding:120px 0 70px}
+  section{padding:60px 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav aria-label="Main">
+      <a class="logo" href="#top">Your Name<i>.</i></a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">&#9776;</button>
+      <div class="links" id="links">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#process">Process</a>
+        <a class="cta" href="#contact">Hire me</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<div class="hero">
+  <div class="orb"></div>
+  <div class="wrap">
+    <h1>I design and build websites that work.</h1>
+    <p class="sub">Hi, I’m Your Name, a web developer and designer. I turn ideas into fast, modern websites that look great on every screen.</p>
+    <div class="btns">
+      <a class="btn main" href="#work">See my work</a>
+      <a class="btn line" href="#contact">Start a project</a>
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>10+</b><span>Projects built</span></div>
+    <div class="stat"><b>100%</b><span>Mobile friendly</span></div>
+    <div class="stat"><b>24h</b><span>Reply time</span></div>
+    <div class="stat"><b>1+</b><span>Years learning</span></div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="wrap">
+    <p class="tag">What I do</p>
+    <h2>Services</h2>
+    <p class="intro">Everything you need to get a clean, professional presence online.</p>
+    <div class="grid3">
+      <div class="card"><div class="ico">&#127912;</div><h3>Website design</h3><p>Clean layouts and clear typography that match your brand and guide visitors to act.</p></div>
+      <div class="card"><div class="ico">&#128187;</div><h3>Web development</h3><p>Fast, responsive websites written in HTML, CSS and JavaScript, hosted for free on GitHub Pages.</p></div>
+      <div class="card"><div class="ico">&#128241;</div><h3>Mobile first</h3><p>Every page is tested on small screens first, so it feels right on any phone.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="work">
+  <div class="wrap">
+    <p class="tag">Selected work</p>
+    <h2>Projects</h2>
+    <p class="intro">A few things I have built. Replace these with your own projects.</p>
+    <div class="grid3">
+      <article class="proj">
+        <div class="thumb t1">Project One</div>
+        <div class="in"><h3>Business website</h3><p>A clean landing page with services, pricing and a contact section.</p>
+        <div class="chips"><span>HTML</span><span>CSS</span></div>
+        <a class="lnk" href="https://github.com/shehehej072-sudo">View project</a></div>
+      </article>
+      <article class="proj">
+        <div class="thumb t2">Project Two</div>
+        <div class="in"><h3>Personal blog</h3><p>A fast reading experience with simple navigation and dark mode.</p>
+        <div class="chips"><span>JavaScript</span><span>Design</span></div>
+        <a class="lnk" href="https://github.com/shehehej072-sudo">View project</a></div>
+      </article>
+      <article class="proj">
+        <div class="thumb t3">Project Three</div>
+        <div class="in"><h3>Web app</h3><p>A small tool that solves one problem well, built for phones and desktops.</p>
+        <div class="chips"><span>JavaScript</span><span>UI</span></div>
+        <a class="lnk" href="https://github.com/shehehej072-sudo">View project</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <p class="tag">How I work</p>
+    <h2>My process</h2>
+    <p class="intro">A simple path from idea to live website.</p>
+    <div class="steps">
+      <div class="step"><h3>Discover</h3><p>We talk about your goal, audience and what the site must do.</p></div>
+      <div class="step"><h3>Design</h3><p>I plan the layout, colors and content so you can approve the look.</p></div>
+      <div class="step"><h3>Build</h3><p>I code the site to be fast, responsive and easy to update.</p></div>
+      <div class="step"><h3>Launch</h3><p>I publish it live and make sure everything works on every device.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="tag">Contact</p>
+    <h2>Let’s build something together</h2>
+    <p>Have a project in mind? Send me an email and I’ll reply within a day.</p>
+    <a class="mail" href="mailto:youremail@example.com">youremail@example.com</a>
+    <div class="social">
+      <a href="https://github.com/shehehej072-sudo">GitHub</a>
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>© 2026 Your Name. All rights reserved.</footer>
+
+<script>
+var b=document.getElementById('burger'),l=document.getElementById('links');
+b.addEventListener('click',function(){var o=l.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');b.setAttribute('aria-expanded','false')}});
+</script>
+</body>
+</html>
